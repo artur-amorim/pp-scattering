@@ -1,0 +1,108 @@
+% Setting up the document class
+\documentclass[12pt,a4paper]{article}
+
+% Relevant packages to use
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{color}
+\usepackage{ulem}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[portuguese]{babel}
+    
+    
+% Begin the document
+\begin{document}
+    
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% First page
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{Computation of the Scattering amplitude}
+\author{Artur Amorim}
+    
+\begin{abstract}
+These notes contain the derivation of the expression for the scattering amplitude of two scalar field by the exchange of the graviton Regge trajecotry in the Kiritsis model.
+\end{abstract}
+
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Kinematics}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+We will use light-cone coordinates $\left( +, -, \perp \right)$, with metric given by $ds^2 = - dx^{+} dx^{-} + dx_\perp^2$, where $x_\perp \in \mathbb{R}^2$ is a vector in impact parameter space.
+For the large $s$ the kinematics of  $12\to34$ scattering are the following
+\begin{align}
+  \label{eq:kinematics}
+&k_1=\left(\!\sqrt{s},\frac{m_1^2}{\sqrt{s}} ,0\right),\  \ k_3=-\left(\!\sqrt{s},\frac{ q_\perp^2 +m_1^2}{\sqrt{s}} , q_\perp \right)\!,\\
+&k_2=\left(\frac{m_2^2}{\sqrt{s}},\sqrt{s} ,0\right),\  \ k_4=-\left(\frac{m_2^2+ q_\perp^2}{\sqrt{s}},\sqrt{s} ,-q_\perp \right).
+\nonumber
+\end{align}
+where $k_1$ and $k_3$ are  respectively the incoming  and outgoing photon momenta.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Coupling scalar to spin J field}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+In the experiments where data was gathered the proton beam is unpolarized. Then the struction of the proton is not important and the proton target will be described by normalizable modes of a scalar field $\Upsilon$ of the form
+\begin{align}
+ \Upsilon \left(X, p \right) = \upsilon_m \left(z \right) e^{i p \cdot x}.
+ \label{eq:Scalar}
+\end{align}
+The momentum $p$ satisfies $p^2 = -m ^2$. 
+
+For the scalar field $\Upsilon$ we will consider a minimal coupling with spin J closed string fields
+\begin{eqnarray}
+\bar{\kappa}_J \int d^5 X \sqrt{-g} \, e^{-\Phi } \, \left ( \Upsilon \nabla^{a_1} \dots \nabla^{a_J} \Upsilon \right ) \,  h_{a_1 \dots a_J} \, .
+\label{eq:couplingScalar}
+\end{eqnarray}
+Again, this coupling is unique up to derivatives of the dilaton field that are subleading in the Regge limit. Focusing on the TT part of the spin $J$
+field we are left with the single coupling
+\begin{eqnarray}
+\bar{\kappa}_J \int d^5 X \sqrt{-g} \, e^{-\Phi } \, \left ( \Upsilon \partial^{\alpha_1} \dots \partial^{\alpha_J} \Upsilon \right ) \,  h_{\alpha_1 \dots \alpha_J} \, .
+\label{eq:couplingScalar2}
+\end{eqnarray}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Scattering amplitude}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+We are interested in computing the Witten diagram of figure~\ref{fig:Witten_diagram}.
+\begin{figure}[t!]
+\centering
+\includegraphics[height=6cm]{imgs/Witten_diagram.pdf} 
+\caption{Tree level Witten diagram representing spin $J$    exchange in a $12\to34$ scattering}
+\label{fig:Witten_diagram}
+\end{figure}
+Taking in to account equation~\ref{eq:couplingScalar2} we can write the amplitude as
+\begin{align}
+    A_J \left( k_i \right) &= - k_J \bar{k}_J \int d^5 X d^5 \bar{X} \sqrt{-g} \sqrt{-\bar{g}} e^{-\Phi -\bar{\Phi}} \times \\ \notag
+    & \times \left( \Upsilon_1 \partial_{-}^J \Upsilon_3 \right) \Pi^{- \cdots -, + \cdots + } \left(X, \bar{X} \right) \left( \Upsilon_2 \partial_{+}^J \Upsilon_4 \right).
+\end{align}
+Using the kinematics of the first section and lowering the indices we get
+\begin{align}
+    A_J \left( k_i \right) &= - k_J \bar{k}_J s^J \int d^5 X d^5 \bar{X} \frac{e^{5A - \Phi}}{2} \frac{e^{5\bar{A} - \bar{\Phi}}}{2} {\left| \upsilon_1 \right|}^2 {\left| \upsilon_2 \right|}^2 e^{- i q_\perp \cdot l_\perp} e^{-2 J \left( A + \bar{A} \right)} \times \\ \notag
+    & \times \Pi_{+ \cdots +, - \cdots -} \left(X \bar{X}\right)
+\end{align}
+Using change of variable $w = x - \bar{x}$, with $l_\perp = x_\perp - \bar{x}_\perp$ and using the identities
+\begin{align}
+    &\int \frac{d w^+ d w^-}{2} \Pi_{+ \cdots +, - \cdots -} \left(X \bar{X}\right) = -i 2^{-J} e^{\left(J-1\right)\left(A+\bar{A}\right)} G_J \left(z, \bar{z}, l_\perp \right) \\
+    &\int d^2 l_\perp e^{- i q_\perp \cdot l_\perp} G_J \left(z, \bar{z}, l_\perp \right) = G_J \left(z, \bar{z}, t \right)
+\end{align}
+the scattering amplitude for spin J exchange is
+\begin{align}
+    &A_J \left(s, t \right) = i V \frac{k_J \bar{k}_J}{2^J} s^J \int dz d\bar{z} e^{4 A - \Phi} e^{4 \bar{A} - \bar{\Phi}} {\left| \upsilon_1 \right|}^2 {\left| \upsilon_2 \right|}^2 e^{- J A} e^{- J \bar{A}} G_J \left(z, \bar{z}, t \right), \\
+    & G_J \left(z, \bar{z}, t \right) = e^{\Phi - A/2} e^{\bar{\Phi} - \bar{A}/2} \sum_n \frac{\psi_n \left(z, J\right) \psi_n \left(\bar{z}, J\right)}{t_n \left(J\right) - t}
+\end{align}
+
+Now we need to spin over J. To do this we will make use of the Sommerfeld-Watson transform
+\begin{align}
+    \frac{1}{2} \sum_{J \geq 2} \left( s^J + {(- s)}^J \right)= - \frac{\pi}{2} \int \frac{dJ}{2 \pi i} \frac{s^J + {(- s)}^J}{\sin \pi J}\,,
+\end{align}
+which demands analytic continuation of the amplitude $\mathcal{A}_J$ for to the complex J-plane. We then deform the contour integral from the poles at even J, to the poles $J = j_n (t)$ defined by $t_n(J) = t$. The scattering then takes the form
+\begin{align}
+& \mathcal{A} = i V \sum_n \int dz d\bar{z} e^{3\left(A + \bar{A}\right)} {\left| \upsilon_1 \right|}^2 {\left| \upsilon_2 \right|}^2 \chi_n, \\ \notag
+& \chi_n = - \frac{\pi}{2} s^{j_n \left(t\right)} \left( \cot\left(\frac{\pi j_n \left(t\right)}{2}\right) + i\right) \frac{k_{j_n \left(t\right)}\bar{k}_{j_n \left(t\right)}}{2^{j_n \left(t\right)}} e^{-\left( j_n \left(t\right) - \frac{1}{2} \right)\left(A+\bar{A}\right)} \times \\
+& \times \frac{d j_n}{d t} \psi_n \left(j_n \left(t\right), z \right)  \psi_n \left(j_n \left(t\right), \bar{z} \right)
+\end{align}
+\end{document}
