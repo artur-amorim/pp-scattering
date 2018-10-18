@@ -10,6 +10,9 @@
 % Begin the document
 \begin{document}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% First page
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \title{Propagators of warped-AdS fields}
 \author{Artur Amorim}
 
@@ -18,15 +21,137 @@
 \end{abstract}
 \maketitle
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Scalar Fields}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 Here we deduce expressions for the bulk-to-bulk and bulk-to-boundary propagators of scalar fields in warped-AdS spaces. We start with the simplest case of AdS and later we generalize for warped-AdS spaces.
 \subsection{AdS space}
 \subsection{Warped-AdS}
+\subsubsection{Definition of the Bulk-to-Bulk propagator}
+The action of the scalar field in a curved spacetime with a dilaton field turned on is
+\begin{align}
+    S_\phi = - \frac{1}{2} \int d^5 x \sqrt{-g} e^{-\Phi} \left( D_\mu \phi D^\mu \phi + m^2 \phi^2 \right)
+\end{align}
+where $\Phi$ is the dilaton, $\phi$ the scalar field and $D_\mu$ the covariant derivative. By using the action principle we find that the equations of motion of this field are
+\begin{align}
+    - D_\mu \left( e^{-\Phi} D^\mu \phi \right) + e^{-\Phi}m^2 \phi = 0
+\end{align}
+Assuming that the dilaton is only a function of $z$ one can show that
+\begin{align}
+    & D_\mu \Phi D^\mu \phi = \dot{\Phi} e^{-2A} \partial_z \phi \\ 
+    & D_\mu D^\mu \phi = e^{-2A} \left( \partial^2_z + \partial^2  + 3 \dot{A} \partial_z \right) \phi
+\end{align}
+From this we get that the equation of motion of the scalar field is
+\begin{align}
+    \label{scalar_eom}
+    e^{-\Phi - 2 A} \left[ \partial^2_z + \partial^2 + \left( 3\dot{A} - \dot{\Phi} \right) \partial_z - e^{2A} m^2 \right] \phi = 0
+\end{align}
+If we now add a term with a source $J$ to the action the field must satisfy the equation of motion
+\begin{align}
+    e^{-\Phi - 2 A} \left[ - \partial^2_z - \partial^2 - \left( 3\dot{A} - \dot{\Phi} \right) \partial_z + e^{2A} m^2 \right] \phi = J \left(x\right)
+\end{align}
+The general solution to this equation is
+\begin{align}
+    \phi \left( X \right) = \phi^0 \left(X\right) + \int d^5 \bar{X} \sqrt{-\bar{g}} G\left(X,\bar{X}\right) J \left(\bar{X}\right)
+\end{align}
+where $\phi^0$ is the solution of equation~\ref{scalar_eom} and G is the solution of the differential equation
+\begin{align}
+    e^{-\Phi - 2 A} \left[- \partial^2_z - \partial^2 - \left( 3\dot{A} - \dot{\Phi} \right) \partial_z + e^{2A} m^2 \right] G\left(X,\bar{X}\right)  = -i \frac{\delta^{(5)\left(X,\bar{X}\right)}}{\sqrt{-g}}
+\end{align}
+This equation can be written in Fourier space as
+\begin{align}
+   \left[- \partial_z \left( e^{3 A - \Phi} \partial_z \right) + m^2 e^{5 A - \Phi} + k^2 e^{3 A - \Phi} \right] g_k \left(z, \bar{z}\right) = - i \delta \left( z -\bar{z} \right)
+\end{align}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Sturm-Liouville theory and equivalent Schrodinger problem}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+The last equation can be written as a Sturm-Liouville problem
+\begin{align}
+    \frac{d}{dz}\left( p\left(z\right) \frac{d y}{dz} \right) + q\left(z\right) y = - \lambda w\left(z\right) y
+\end{align}
+with
+\begin{align}
+    & p\left(z\right) =  e^{3 A - \Phi}, & q\left(z\right) =  -m^2  e^{5 A - \Phi} \\
+    & w\left(z\right) = e^{3 A - \Phi}, & \lambda = - k^2
+\end{align}
+According with Sturm-Liouville theory there is a set of eigenvalues $\lambda_n$ with eigenfunctions $f_n$, that satisfy given boundary conditions, such that
+\begin{align}
+    \label{eq_eigenfunction}
+    \frac{d}{dz}\left( p\left(z\right) \frac{d f_n}{dz} \right) + q\left(z\right) f_n = - \lambda_n w\left(z\right) f_n.
+\end{align}
+Moreover are a basis and orthonormal relation
+\begin{align}
+    \int d z f_n\left(z\right) f_m \left( z \right) w \left(z\right) = \delta_{n m}
+\end{align}
+
+In our case if we define
+\begin{align}
+    \label{sch_trans}
+    f_n\left(z\right) = e^{\frac{\Phi - 3 A}{2}} \psi_n \left(z\right)
+\end{align}
+we can recast the last equation in Schrodinger form
+\begin{align}
+    & -\psi_n'' + V\left(z\right) \psi_n =  \lambda_n \psi_n, \\
+    & V\left( z \right) = \frac{1}{4} \left( 9 \dot{A}^2 - 6 \dot{A} \dot{\Phi} + \dot{\Phi}^2 + 6 \ddot{A} - 2 \ddot{\Phi} + 4 m^2 e^{2A}\right)
+\end{align}
+We know from Quantum Mechanics that the eigenfunctions satisfy the completeness relation
+\begin{align}
+    \delta \left( z - \bar{z} \right) = \sum_n \psi_n \left(z\right) \psi_n \left(\bar{z}\right) 
+\end{align}
+Using~\ref{sch_trans} we can show
+\begin{align}
+    \label{delta_eigen_decomp}
+    \delta \left( z - \bar{z} \right) = e^{3 A - \Phi} \sum_n f_n \left(z \right) f_n\left(\bar{z}\right)
+\end{align}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Computation of $\tilde{G}\left(z,\bar{z},k\right)$}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Because the eigenfunctions $f_n$ are a basis we write $\tilde{G}$ as a linear combination of these functions
+\begin{align}
+    g_k\left(z,\bar{z}\right) = \sum_n f_n\left(z\right) a_{k,n} \left(\bar{z}\right)
+\end{align}
+we get
+\begin{align}
+    \sum_n\left[- \partial_z \left( e^{3 A - \Phi} \partial_z \right) + m^2 e^{5 A - \Phi} + k^2 e^{3 A - \Phi} \right] f_n\left(z\right) a_{k,n} \left(\bar{z}\right) = - i \delta \left( z -\bar{z} \right).
+ \end{align}
+From~\ref{eq_eigenfunction} and~\ref{delta_eigen_decomp} and  we get
+\begin{align}
+    \sum_n \left(\lambda_n + k^2 \right) f_n\left(z\right) a_{k,n} \left(\bar{z}\right) = - i \sum_n f_n \left(z \right) f_n \left(\bar{z}\right)
+ \end{align}
+Using the orthogonality condition of the eigenfunctions $f_n$ we obtain
+\begin{align}
+    a_{k,n}\left(\bar{z}\right) = -i \frac{f_n\left(\bar{z}\right)}{k^2 + \lambda_n }
+\end{align}
+Note that there are poles when $k^2 = - \lambda_n$ for some n. We can identify these poles with a bound state of mass $m_n^2$. Given this the bulk-to-bulk propagator can be written as
+\begin{align}
+    G \left(z, x ; \bar{z}, \bar{x} \right) = - i \int \frac{d^4 k}{\left(2 \pi \right)^4} \sum_n \frac{f_n \left(z\right)f_n \left(\bar{z}\right)}{k^2 + m_n ^2 }
+\end{align}
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Vector Fields}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{AdS space}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Warped-AdS}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Fermionic Fields}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{AdS space}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Warped-AdS}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \end{document}
