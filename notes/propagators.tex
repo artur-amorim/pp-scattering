@@ -17,7 +17,7 @@
 \author{Artur Amorim}
 
 \begin{abstract}
-    These notes contain the derivation of the expression for the bulk-to-bulk and boundary-to-bulk propagators of scalar, vector and fermionic field in warped-AdS spaces.
+These notes contain the derivation of the expression for the bulk-to-bulk and boundary-to-bulk propagators of scalar, vector and fermionic field in warped-AdS spaces.
 \end{abstract}
 \maketitle
 
@@ -81,12 +81,13 @@ According with Sturm-Liouville theory there is a set of eigenvalues $\lambda_n$ 
     \label{eq_eigenfunction}
     \frac{d}{dz}\left( p\left(z\right) \frac{d f_n}{dz} \right) + q\left(z\right) f_n = - \lambda_n w\left(z\right) f_n.
 \end{align}
-Moreover are a basis and orthonormal relation
+Moreover they are a basis and orthonormal relation
 \begin{align}
     \int d z f_n\left(z\right) f_m \left( z \right) w \left(z\right) = \delta_{n m}
 \end{align}
+The wavefunctions will be computed by imposing $f_n\left(0\right) = 0$ and $\partial_z f_n \left( z \rightarrow \infty \right) = 0$. The value of $\partial_z f_n \left( z \rightarrow \infty \right)$ at $z=0$ will be determined by the shooting method.
 
-In our case if we define
+If we define
 \begin{align}
     \label{sch_trans}
     f_n\left(z\right) = e^{\frac{\Phi - 3 A}{2}} \psi_n \left(z\right)
