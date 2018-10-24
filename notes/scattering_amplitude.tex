@@ -105,4 +105,23 @@ which demands analytic continuation of the amplitude $\mathcal{A}_J$ for to the 
 & \chi_n = - \frac{\pi}{2} s^{j_n \left(t\right)} \left( \cot\left(\frac{\pi j_n \left(t\right)}{2}\right) + i\right) \frac{k_{j_n \left(t\right)}\bar{k}_{j_n \left(t\right)}}{2^{j_n \left(t\right)}} e^{-\left( j_n \left(t\right) - \frac{1}{2} \right)\left(A+\bar{A}\right)} \times \\
 & \times \frac{d j_n}{d t} \psi_n \left(j_n \left(t\right), z \right)  \psi_n \left(j_n \left(t\right), \bar{z} \right)
 \end{align}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Delta function approximation}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Delta function approximation - analytic work}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+The normalizable modes satisfy
+\begin{align}
+    \int dz e^{3 A - \Phi} {|\upsilon_1|}^2 = 1
+\end{align}
+Like in the previous work of Miguel we will use a delta function approximation.
+More precisely we make the substitution ${|\upsilon_1|}^2 \rightarrow e^{\Phi - 3 A} \delta \left( z - z^{*} \right)$.
+With this approximation the scattering amplitude reads
+\begin{align}
+    & \mathcal{A} = - \frac{\pi}{2} \sum_n \frac{s^{j_n}}{2^{j_n}} \frac{d j_n}{d t}\left( \cot\left(\frac{\pi j_n}{2}\right) + i\right) {\left(k_{j_n} e^{\Phi^{*}-\left( j_n - \frac{1}{2} \right)A^{*}} \psi_n \left(j_n, z^{*} \right)\right)}^2
+\end{align}
+where it is implicit that $j_n$ is a function of t.
 \end{document}
