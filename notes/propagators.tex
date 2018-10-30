@@ -4,7 +4,8 @@
 % Relevant packages to use
 \usepackage{amssymb}
 \usepackage{amsfonts}
-\usepackage{amsmath}
+\usepackage{amsmath, latexsym}
+\usepackage{slashed}
 
 
 % Begin the document
@@ -151,6 +152,68 @@ Note that there are poles when $k^2 = - \lambda_n$ for some n. We can identify t
 \subsection{AdS space}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Dirac equation in AdS}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Here we solve the Dirac equation in a $d+1$-Euclidean AdS space. The Dirac equation in such a space is given by
+\begin{align}
+    \left( z \gamma^{\mu} \partial_\mu - \frac{d}{2} \gamma^5 - m_5 \right) \psi = 0
+\label{dirac_eq}
+\end{align}
+where $\gamma^{\mu} = \{ \gamma^5, \gamma^{0}, \gamma^{1}, \gamma^{2}, \gamma^{3} \}$ and the chirality representation is assumed. These matrices satisfy $\gamma^{\mu} \gamma{\nu} + \gamma^{\nu} \gamma{\mu} = 2 \delta^{\mu \nu}$. If we apply $\gamma^{\mu} \partial_\mu$ to equation~\ref{dirac_eq} we get
+\begin{align}
+    \left[\partial^2_z + \Box - \frac{d}{z} \partial_z - \frac{1}{z^2} \left( m_5^2 - \frac{d^2}{4} - \frac{d}{2} - \gamma^{5} m_5 \right) \right] \psi \left(x \right) = 0
+\label{dirac_eq_dec}
+\end{align}
+This equation can be split in two by considering eigenvectors of $\gamma^5 a^{\pm} = \pm a^{\pm}$. Their solutions, in Fourier space, are respectively
+\begin{align}
+    & z^{\frac{d+1}{2}} \left( C_1 K_{m_5 - \frac{1}{2}} \left( k z \right) + C_2 I_{m_5 - \frac{1}{2}} \left( k z \right)\right) \\
+    & z^{\frac{d+1}{2}} \left( C_1 K_{m_5 + \frac{1}{2}} \left( k z \right) + C_2 I_{m_5 + \frac{1}{2}} \left( k z \right)\right) \notag
+\end{align}
+In the fermion Mathematica notebook we checked that the solution to the last equation that does not diverge when $z \rightarrow \infty$ is indeed
+\begin{align}
+    \psi\left(x\right) = \int \frac{d^d k}{{\left(2\pi\right)}^d} e^{- i\mathbf{k} \cdot \mathbf{x}} z^{\frac{d+1}{2}} \left( a^{+}\left( \mathbf{k} \right) K_{m_5-\frac{1}{2}} \left( k z \right) + a^{-}\left( \mathbf{k} \right) K_{m_5+\frac{1}{2}} \left( k z \right) \right) 
+\end{align}
+The spinors $a^{+}$ and $a^{-}$ are related by
+\begin{align}
+    a^{-} = \frac{i}{k} k^i \gamma^{i} a^{+}
+\end{align}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Bulk-to-bulk propagator in AdS}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Let us define 
+\begin{align}
+    &\phi^{\left( K \right)} \left(z, \mathbf{k} \right) = z^{\frac{d+1}{2}} \left[ K_{m+\frac{1}{2}} \left( k z \right) - \frac{i}{k} k^i \gamma^i K_{m-\frac{1}{2}} \left( k z \right)  \right] \\
+    &\phi^{\left( I \right)} \left(z, \mathbf{k} \right) = z^{\frac{d+1}{2}} \left[ I_{m+\frac{1}{2}} \left( k z \right) + \frac{i}{k} k^i \gamma^i I_{m-\frac{1}{2}} \left( k z \right)  \right] \notag
+\end{align}
+The bulk-to-boundary propagator $ S \left(z, w \right) $needs to go to zero when $z, w \rightarrow 0$ and $z, w \rightarrow \infty $ and needs to satisfy the equation
+\begin{align}
+    \left(\slashed{D} - m_5\right) S\left(z,w\right) = \frac{1}{\sqrt{g}} \delta^{d+1} \left( z - w \right)
+\label{spinor_propagotor_dirac}
+\end{align}
+We try the ansatz
+\begin{align}
+    S \left(z, w \right) = \int \frac{d^d \mathbf{k}}{{\left(2\pi\right)}^d} k e^{- i \mathbf{k}\cdot \left(\mathbf{z}-\mathbf{w}\right)} \left[ \theta \left( z - w \right)  \phi^{\left( K \right)} \left(z, \mathbf{k} \right) \mathcal{P}_{-} \bar{\phi}^{\left( I \right)} \left(w, -\mathbf{k} \right) - \right. \\  
+    \left. - \theta\left( w - z \right) \phi^{\left( I \right)} \left(z, \mathbf{k} \right) \mathcal{P}_{-} \bar{\phi}^{\left( K \right)}\left(w, -\mathbf{k} \right) \right] \notag
+\end{align}
+In the fermion Mathematica notebook we proved this expression can be written as
+\begin{align}
+    S \left(z, w \right) = - z^{-\frac{1}{2}} \left[ \slashed{D} + \frac{1}{2}\gamma^5+ m_5 \right] \left[ G_{\frac{d}{2}+m_5 - \frac{1}{2}} \left(z,w\right) \mathcal{P}_{-} + G_{\frac{d}{2}+m_5 +\frac{1}{2}} \left(z,w\right) \mathcal{P}_{+}\right] w^{\frac{1}{2}}
+\label{spinor_bulk_propagator}
+\end{align}
+where G is the scalar bulk-to-bulk propagator
+\begin{align}
+    G_{\Delta} \left(z, w \right) = \int \frac{d^d \mathbf{k}}{{\left(2\pi\right)}^d}  e^{- i \mathbf{k}\cdot \left(\mathbf{z}-\mathbf{w}\right)} \left[ \theta \left( z - w \right) K_{\nu} \left( k z \right) I_\nu \left( k w \right) - \right. \\  
+    \left. - \theta\left( w - z \right) K_{\nu} \left( k w \right) I_\nu \left( k z \right) \right] \notag
+\end{align}
+Again in the mathematica notebook we showed that the expression~\ref{spinor_bulk_propagator} satifies the equation~\ref{spinor_propagotor_dirac} and hence it's the bulk-to-bulk propagator we were looking for.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{boundary-to-bulk propagator in AdS}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+We now try to compute the boundary-to-bulk propagator of a bulk spinor field in AdS.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Warped-AdS}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

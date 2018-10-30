@@ -123,5 +123,18 @@ With this approximation the scattering amplitude reads
 \begin{align}
     & \mathcal{A} = - \frac{\pi}{2} \sum_n \frac{s^{j_n}}{2^{j_n}} \frac{d j_n}{d t}\left( \cot\left(\frac{\pi j_n}{2}\right) + i\right) {\left(k_{j_n} e^{\Phi^{*}-\left( j_n - \frac{1}{2} \right)A^{*}} \psi_n \left(j_n, z^{*} \right)\right)}^2
 \end{align}
-where it is implicit that $j_n$ is a function of t.
+where it is implicit that $j_n$ is a function of t. Let us define
+\begin{align}
+    & I_n = {\left( \exp\left[\Phi^{*} - \left( j_n - \frac{1}{2} \right) A^{*}\right] \psi \left(j_n, z^{*} \right) \right)}^2 \\
+    & \bar{I}_n = - \frac{\pi}{2^{j_n + 1}} s^{j_n} \frac{d j_n}{dt} \left( i + \cot \left( \frac{\pi j_n}{2} \right) \right) k_{j_n}^2
+\end{align}
+For the $k_J$ we will make the ansatz
+\begin{align}
+    k_J = a \exp \left[b \left(J - 1 \right)\right]
+\end{align}
+where the parameteres a and b will be fitted by the data.
+Then the amplitude can be simply written as
+\begin{align}
+    \mathcal{A} = \sum_n I_n \bar{I}_n
+\end{align}
 \end{document}
