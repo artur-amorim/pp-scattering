@@ -207,13 +207,45 @@ where G is the scalar bulk-to-bulk propagator
 \begin{align}
     G_{\Delta} \left(z, w \right) = \int \frac{d^d \mathbf{k}}{{\left(2\pi\right)}^d}  e^{- i \mathbf{k}\cdot \left(\mathbf{z}-\mathbf{w}\right)} \left[ \theta \left( z - w \right) K_{\nu} \left( k z \right) I_\nu \left( k w \right) - \right. \\  
     \left. - \theta\left( w - z \right) K_{\nu} \left( k w \right) I_\nu \left( k z \right) \right] \notag
+\label{scalar_propagator}
 \end{align}
 Again in the mathematica notebook we showed that the expression~\ref{spinor_bulk_propagator} satifies the equation~\ref{spinor_propagotor_dirac} and hence it's the bulk-to-bulk propagator we were looking for.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{boundary-to-bulk propagator in AdS}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-We now try to compute the boundary-to-bulk propagator of a bulk spinor field in AdS.
+We now try to compute the boundary-to-bulk propagator of a bulk spinor field in AdS. It is related with the bulk-to-bulk propagator through
+\begin{align}
+    \Sigma_{\Delta_{+}} \left(z, \mathbf{x}\right) =  \lim_{\epsilon \to \ 0} - \epsilon^{-\Delta_{+} + \frac{1}{2}} S \left(z; \epsilon, \mathbf{x} \right)
+\end{align}
+From the expression of the scalar bulk propagator we can show that
+\begin{align}
+    & G_{m+\frac{d}{2} - \frac{1}{2}} \left(z, \epsilon \right) = \frac{\epsilon^{m_5 + \frac{d}{2} - \frac{1}{2}} z^{\frac{d}{2}} }{2^{m_5-\frac{1}{2}} \Gamma\left( m_5 + \frac{1}{2} \right)} \int \frac{d^d k}{{\left( 2 \pi \right)}^d} k^{m_5 - \frac{1}{2}} K_{m_5 - \frac{1}{2}}\left( k z \right) e^{- i \mathbf{k} \cdot \left( \mathbf{z} - \mathbf{w} \right)} \\
+    & G_{m+\frac{d}{2} + \frac{1}{2}} \left(z, \epsilon \right) = \frac{\epsilon^{m_5 + \frac{d}{2} + \frac{1}{2}} z^{\frac{d}{2}} }{2^{m_5+\frac{1}{2}} \Gamma\left( m_5 + \frac{3}{2} \right)} \int \frac{d^d k}{{\left( 2 \pi \right)}^d} k^{m_5 + \frac{1}{2}} K_{m_5 + \frac{1}{2}}\left( k z \right) e^{- i \mathbf{k} \cdot \left( \mathbf{z} - \mathbf{w} \right)} \notag
+\end{align}
+With this result plus the expression of the spinor bulk propagator we can write the bulk-to-boundary of the spinor field as
+\begin{align}
+    & \Sigma_{\Delta_{+}} \left(z, \mathbf{x}\right) = z^{-\frac{1}{2}} \left[ \slashed{D} + \frac{1}{2}\gamma^5+ m_5 \right] \frac{z^{\frac{d}{2}}}{2^{m_5 - \frac{1}{2}}\Gamma\left( m_5 + \frac{1}{2} \right)} \times \\
+    & \times  \int \frac{d^d k}{{\left( 2 \pi \right)}^d} k^{m_5 - \frac{1}{2}} K_{m_5 - \frac{1}{2}} \left( k z \right) e^{-i \mathbf{k} \cdot \left( \mathbf{z} - \mathbf{w} \right)} \mathcal{P}_{-} \notag
+\end{align}
+The integral in the last expression going to spherical coordinates and using the integral representation of the Bessel function
+\begin{align}
+   &\int d^d k = \int_0^{+ \infty} dk k^{d-1} \int_0^{\pi} d\theta {\left(\sin \theta\right)}^{d-2} \int d \Omega_{d-2} \\
+   &\int_{0}^\pi d\theta {\left( \sin \theta \right)}^{d-2} \cos \left( k \left| \mathbf{z} - \mathbf{w} \right| \right) = \frac{\sqrt{\pi} \Gamma\left(\frac{d-1}{2}\right)2^{\frac{d}{2}-1}}{{\left(k \left| \mathbf{z} - \mathbf{w} \right| \right)}^{\frac{d}{2}-1}} J_{\frac{d}{2}-1} \left( k \left| \mathbf{z} - \mathbf{w} \right| \right)
+\end{align}
+we get an integral in k that was performed in the fermion notebook. Putting everything together we get
+\begin{align}
+    \Sigma_{\Delta_{+}} \left(z, \mathbf{x}\right) = \frac{\Gamma\left( m_5 + \frac{d-1}{2}\right)}{2 \pi^{\frac{d}{2}} \Gamma\left( m_5 + \frac{1}{2}\right)} z^{-\frac{1}{2}} \left[ \slashed{D} + \frac{1}{2}\gamma^5+ m_5 \right] {\left(\frac{z}{z^2+{\left| \mathbf{z} - \mathbf{w} \right|}^2}\right)}^{m_5 + \frac{d-1}{2}} \mathcal{P}_{-}
+\end{align}
+Since $\slashed{D} = z \gamma^{\mu} \partial_\mu - \frac{d}{2} \gamma5 $ after some algebra we get
+\begin{align}
+    \Sigma_{\Delta_{+}} \left(z, \mathbf{x}\right) = - U \left(z - w \right) K_\Delta \left(z, \mathbf{w}\right) \mathcal{P}_{-}
+\end{align}
+where $\Delta = m_5 + \frac{d}{2} + \frac{1}{2}$ 
+\begin{align}
+    & U\left(z - w \right) = \frac{\gamma^{\mu} \left( z_\mu - w_\mu \right)}{\sqrt{z}} \\
+    & K_\Delta \left(z, \mathbf{w}\right) = \frac{\Gamma\left( \Delta \right)}{\pi^{\frac{d}{2}} \Gamma\left( \Delta - \frac{d}{2} \right)} {\left( \frac{z}{z^2 + {\left| \mathbf{z} - \mathbf{w} \right|}^2} \right)}^\Delta
+\end{align}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Warped-AdS}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
