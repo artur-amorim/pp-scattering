@@ -249,5 +249,55 @@ where $\Delta = m_5 + \frac{d}{2} + \frac{1}{2}$
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Warped-AdS}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+We will know find the equation of motion of a spinor in a warped-AdS spacetime:
+\begin{align}
+    ds^2 = e^{2 A } \left( dz^2 + \delta_{ij}dx^i dx^j \right)
+\end{align}
+In order to write the action we need to use the vielbein formalism. The vielbein formalism consists of introducing vectors $e^{\mu}_a,\quad a = 0,\dots,d$ such that
+\begin{align}
+    e^{\mu}_a e^{\nu}_b g_{\mu \nu} = \eta_{a b}
+\end{align}
+These vectors allow us to relate $\gamma$ matrices in Minkowski spacetime with the ones in curved spacetime. We will use the following the following vielbein
+\begin{align}
+    e^\mu_a = e^{-A} \delta^\mu_a
+\end{align}
+The spin connection $\omega_\mu^{ab}$, computed in Wolfram Mathematica, is given by
+\begin{align}
+    \omega_\mu^{ab} = -\dot{A} \left( \delta_0^a \delta_\mu^b - \delta_0^b \delta_\mu^a \right)
+\end{align}
+Since we are going to work in Euclidean space we need to use Euclidean $\gamma$ matrices. The 5 dimensional matrices that we are going to use are $\{ \gamma_5, \gamma^0, i \gamma^1, i \gamma^2, i \gamma^3 \}$ and they satisfy $\gamma^\mu \gamma^\nu + \gamma^\nu \gamma^\mu = 2 \delta^{\mu \nu}$.
 
+The action for the bulk spinor is then
+\begin{align}
+    S_F = \int d^d x dz \sqrt{g} \bar{\psi} \left( \slashed{D} - M \left(z \right)  \right) \psi
+\end{align}
+where $M\left(z\right) = m_5 + V\left(z\right)$, $m_5$ being the bulk mass related to the conformal dimension $\Delta$ of the dual operator by $\
+|m_5| = \Delta - \frac{d}{2}$. More comments about this potential later.
+The operator $\slashed{D}$ is given by
+\begin{align}
+    \slashed{D} \psi = e^{\mu}_a \gamma^a \left( \partial_\mu + \frac{1}{2} \omega_\mu^{bc} \Omega_{bc} \right) \psi = \left( e^{-A} \gamma^{\mu} \partial_\mu + \frac{d}{2} e^{-A} \dot{A} \gamma_5 \right)\psi
+\end{align}
+and the EOM is simply
+\begin{align}
+    \left( e^{-A} \gamma^{\mu} \partial_\mu + \frac{d}{2} e^{-A} \dot{A} \gamma_5 - M\left(z\right) \right)\psi = 0
+\label{dirac_eq_warped}
+\end{align}
+If we multiply~\ref{dirac_eq_warped} by $\gamma^{\mu}\partial_\mu$ and using the Dirac equation in warped-AdS after boring algebra we get the equation
+\begin{align}
+    \left(e^{-A} \partial_z^2 + e^{-A} \Box_d + d \dot{A} e^{-A} \partial_z + \frac{d^2}{4} \dot{A}^2 e^{-A} + \right. \\ \notag
+    \left. +  \frac{d}{2} \ddot{A} e^{-A} - \gamma_5 \dot{M}  - e^{A} M^2 - \dot{A} M \gamma_5 \right) \psi = 0
+\end{align}
+In the AdS case $\dot{M} = 0$ and $A = -\log z$ and we recover equation~\ref{dirac_eq_dec}.
+
+We will know find the equivalent Schrodinger problem. First we go for Fourier space where the equation becomes
+\begin{align}
+    \left(e^{-A} \partial_z^2 - e^{-A} k^2  + d \dot{A} e^{-A} \partial_z + \frac{d^2}{4} \dot{A}^2 e^{-A} + \right. \\ \notag
+    \left. +  \frac{d}{2} \ddot{A} e^{-A} - \gamma_5 \dot{M}  - e^{A} M^2 - \dot{A} M \gamma_5 \right) \psi = 0
+\end{align}
+and we make $\psi = e^{- \frac{d}{2} A} f$. Furthermore we decompose f as $g_L u_L + g_R u_R$ where $\gamma_5 u_{R/L} = \pm u_{R/L}$. After that we get two Schrodinger problems
+\begin{align}
+    &- g_L'' + \left( e^{2A} M^2 - e^{A} M \dot{A} - e^{A} \dot{M} \right)g_L = m_n^2 g_L \\
+    &- g_R'' + \left( e^{2A} M^2 + e^{A} M \dot{A} + e^{A} \dot{M} \right)g_R = m_n^2 g_R
+\end{align}
+One my note that in this computations we didn't consider the dilaton. The reason for this is that when we take it in to account we realize that it does not contribute to the spectrum of the spinor. According to Brodsky the introduction of a dilaton in the action can be rotated away leavin the action conformally invariant. To break the conformal invariance we introduce the potential $M$.
 \end{document}
