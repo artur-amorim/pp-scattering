@@ -269,30 +269,30 @@ Since we are going to work in Euclidean space we need to use Euclidean $\gamma$ 
 
 The action for the bulk spinor is then
 \begin{align}
-    S_F = \int d^d x dz \sqrt{g} \bar{\psi} \left( \slashed{D} - M \left(z \right)  \right) \psi
+    S_F = \int d^d x dz \sqrt{g} e^{-\Phi} \bar{\psi} \left( \slashed{D} - e^{-A} \gamma_5 \frac{\dot{\Phi}}{2} - m_5  \right) \psi,
 \end{align}
-where $M\left(z\right) = m_5 + V\left(z\right)$, $m_5$ being the bulk mass related to the conformal dimension $\Delta$ of the dual operator by $\
-|m_5| = \Delta - \frac{d}{2}$. More comments about this potential later.
+$m_5$ being the bulk mass related to the conformal dimension $\Delta$ of the dual operator by $\
+|m_5| = \Delta - \frac{d}{2}$. We have assumed $\Phi = \Phi\left(z\right)$.
 The operator $\slashed{D}$ is given by
 \begin{align}
     \slashed{D} \psi = e^{\mu}_a \gamma^a \left( \partial_\mu + \frac{1}{2} \omega_\mu^{bc} \Omega_{bc} \right) \psi = \left( e^{-A} \gamma^{\mu} \partial_\mu + \frac{d}{2} e^{-A} \dot{A} \gamma_5 \right)\psi
 \end{align}
 and the EOM is simply
 \begin{align}
-    \left( e^{-A} \gamma^{\mu} \partial_\mu + \frac{d}{2} e^{-A} \dot{A} \gamma_5 - M\left(z\right) \right)\psi = 0
+    \left( e^{-A} \gamma^{\mu} \partial_\mu -e^{-A} \gamma_5 \frac{\dot{\Phi}}{2}+ \frac{d}{2} e^{-A} \dot{A} \gamma_5 - m_5 \right)\psi = 0
 \label{dirac_eq_warped}
 \end{align}
 If we multiply~\ref{dirac_eq_warped} by $\gamma^{\mu}\partial_\mu$ and using the Dirac equation in warped-AdS after boring algebra we get the equation
 \begin{align}
-    \left(e^{-A} \partial_z^2 + e^{-A} \Box_d + d \dot{A} e^{-A} \partial_z + \frac{d^2}{4} \dot{A}^2 e^{-A} + \right. \\ \notag
-    \left. +  \frac{d}{2} \ddot{A} e^{-A} - \gamma_5 \dot{M}  - e^{A} M^2 - \dot{A} M \gamma_5 \right) \psi = 0
+    & \left( \partial_z^2 + \Box_d + d \dot{A} \partial_z -\dot{\Phi} \partial_z  + \frac{d}{2} \ddot{A} - \frac{d}{2} \dot{A}\dot{\Phi}+\frac{d^2}{4} \dot{A}^2 + \right. \\
+    & \left. + \frac{\dot{\Phi}^2}{4} - \frac{\ddot{\Phi}}{2} - m_5 \dot{A} e^{A} \gamma_5 - m_5^2 e^{2A}\right) \psi = 0
 \end{align}
-In the AdS case $\dot{M} = 0$ and $A = -\log z$ and we recover equation~\ref{dirac_eq_dec}.
+In the AdS case $\dot{\Phi} = 0$ and $A = -\log z$ and we recover equation~\ref{dirac_eq_dec}.
 
 We will know find the equivalent Schrodinger problem. First we go for Fourier space where the equation becomes
 \begin{align}
-    \left(e^{-A} \partial_z^2 - e^{-A} k^2  + d \dot{A} e^{-A} \partial_z + \frac{d^2}{4} \dot{A}^2 e^{-A} + \right. \\ \notag
-    \left. +  \frac{d}{2} \ddot{A} e^{-A} - \gamma_5 \dot{M}  - e^{A} M^2 - \dot{A} M \gamma_5 \right) \psi = 0
+    & \left( \partial_z^2 -k ^2 + d \dot{A} \partial_z -\dot{\Phi} \partial_z  + \frac{d}{2} \ddot{A} - \frac{d}{2} \dot{A}\dot{\Phi}+\frac{d^2}{4} \dot{A}^2 + \right. \\
+    & \left. + \frac{\dot{\Phi}^2}{4} - \frac{\ddot{\Phi}}{2} - m_5 \dot{A} e^{A} \gamma_5 - m_5^2 e^{2A}\right) \psi = 0
 \end{align}
 and we make $\psi = e^{- \frac{d}{2} A} f$. Furthermore we decompose f as $g_L u_L + g_R u_R$ where $\gamma_5 u_{R/L} = \pm u_{R/L}$. After that we get two Schrodinger problems
 \begin{align}
