@@ -6,6 +6,7 @@
 \usepackage{amsfonts}
 \usepackage{amsmath, latexsym}
 \usepackage{slashed}
+\usepackage{dsfont}
 
 
 % Begin the document
@@ -279,7 +280,7 @@ The operator $\slashed{D}$ is given by
 \end{align}
 and the EOM is simply
 \begin{align}
-    \left( e^{-A} \gamma^{\mu} \partial_\mu -e^{-A} \gamma_5 \frac{\dot{\Phi}}{2}+ \frac{d}{2} e^{-A} \dot{A} \gamma_5 - m_5 \right)\psi = 0
+    e^{-\Phi}\left( e^{-A} \gamma^{\mu} \partial_\mu -e^{-A} \gamma_5 \frac{\dot{\Phi}}{2}+ \frac{d}{2} e^{-A} \dot{A} \gamma_5 - m_5 \right)\psi = 0
 \label{dirac_eq_warped}
 \end{align}
 If we multiply~\ref{dirac_eq_warped} by $\gamma^{\mu}\partial_\mu$ and using the Dirac equation in warped-AdS after boring algebra we get the equation
@@ -294,10 +295,62 @@ We will know find the equivalent Schrodinger problem. First we go for Fourier sp
     & \left( \partial_z^2 -k ^2 + d \dot{A} \partial_z -\dot{\Phi} \partial_z  + \frac{d}{2} \ddot{A} - \frac{d}{2} \dot{A}\dot{\Phi}+\frac{d^2}{4} \dot{A}^2 + \right. \\
     & \left. + \frac{\dot{\Phi}^2}{4} - \frac{\ddot{\Phi}}{2} - m_5 \dot{A} e^{A} \gamma_5 - m_5^2 e^{2A}\right) \psi = 0
 \end{align}
-and we make $\psi = e^{- \frac{d}{2} A} f$. Furthermore we decompose f as $g_L u_L + g_R u_R$ where $\gamma_5 u_{R/L} = \pm u_{R/L}$. After that we get two Schrodinger problems
+and we make $\psi = e^{\frac{\Phi}{2} - 2A} f$. Furthermore we decompose f as $g_L u_L + g_R u_R$ where $\gamma_5 u_{R/L} = \pm u_{R/L}$. After that we get two Schrodinger problems
 \begin{align}
-    &- g_L'' + \left( e^{2A} M^2 - e^{A} M \dot{A} - e^{A} \dot{M} \right)g_L = m_n^2 g_L \\
-    &- g_R'' + \left( e^{2A} M^2 + e^{A} M \dot{A} + e^{A} \dot{M} \right)g_R = m_n^2 g_R
+    \label{left_schrodinger_problem}
+    &- g_L'' + \left( e^{2A} m_5^2 - e^{A} m_5 \dot{A} \right)g_L = m_n^2 g_L \\
+    \label{right_schrodinger_problem}
+    &- g_R'' + \left( e^{2A} m_5^2 + e^{A} m_5 \dot{A} \right)g_R = m_n^2 g_R
 \end{align}
-One my note that in this computations we didn't consider the dilaton. The reason for this is that when we take it in to account we realize that it does not contribute to the spectrum of the spinor. According to Brodsky the introduction of a dilaton in the action can be rotated away leavin the action conformally invariant. To break the conformal invariance we introduce the potential $M$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Propagators in Warped-AdS}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+We know want to find the bulk-to-bulk propagator of a spinor field in warped-AdS. From it we will be able to get the bulk-to-boundary propagator. The bulk-to-bulk propagator $S\left(X,\bar{X}\right)$ is defined through
+\begin{align}
+    e^{-\Phi}\left( e^{-A} \gamma^{\mu} \partial_\mu -e^{-A} \gamma_5 \frac{\dot{\Phi}}{2}+ \frac{d}{2} e^{-A} \dot{A} \gamma_5 - m_5 \right) S \left(X, \bar{X}\right) = \frac{1}{\sqrt{g}} \delta^5 \left( X - \bar{X} \right)
+\label{spinor_bulk_propagator_def}
+\end{align}
+Now we write
+\begin{align}
+    S\left(X,\bar{X}\right) = \int \frac{d^4 k}{{\left(2\pi\right)}^4} S_k \left(z,\bar{z}\right) e^{i k \cdot \left(\mathbf{x}-\mathbf{\bar{x}}\right)}
+\end{align}
+And equation~\ref{spinor_bulk_propagator_def} for $d=4$ becomes
+\begin{align}
+    e^{-\Phi}\left[ e^{-A} \gamma_5 \left( \partial_z - \frac{1}{2} \dot{\Phi} \right) + i e^{-A} \slashed{k} + 2 e^{-A} \dot{A} \gamma_5 - m_5 \right] S_k \left(z, \bar{z}\right) = \frac{1}{\sqrt{g}} \delta \left( z - \bar{z} \right)
+\label{spinor_bulk_propagator_def_fourier}
+\end{align}
+We take as ansatz
+\begin{align}
+    & S_k \left(z, \bar{z}\right) = - e^{\frac{1}{2}A\left(z\right)} \left[ e^{-A} \gamma_5 \left( \partial_z - \frac{1}{2} \dot{\Phi} \right) + i e^{-A} \slashed{k} + \frac{3}{2} e^{-A} \dot{A} \gamma_5 + m_5 \right] \times \\
+    & \times e^{\frac{\Phi-3 A}{2}}e^{\frac{\bar{\Phi}-3 \bar{A}}{2}} \left( \sum_n \frac{g_n(z)g_n(\bar{z})}{k^2+ m_n^2} P_{-} + \sum_n \frac{h_n(z)h_n(\bar{z})}{k^2+ m_n^2} P_{+} \right)e^{-\frac{1}{2}A\left(\bar{z}\right)} \notag
+\label{spinor_bulk_propagator_sol_fourier}
+\end{align}
+Then after computations performed in the Mathematica notebook the left-hand side is
+\begin{align}
+    &e^{\frac{1}{2} \left( - 4 \bar{A} - 6 A + \bar{\Phi}-\Phi \right)} \sum_n
+    \begin{bmatrix}
+        \frac{g_n\left(\bar{z}\right)\left( - \partial_z^2 + k^2 + \left( e^{2 A} m_5^2 + e^{A} m_5 \dot{A} \right)  \right)g_n\left(z\right)}{k^2+m_n^2}\mathds{1}_{2\times 2} & 0 \\
+        0 & \frac{h_n\left(\bar{z}\right)\left( - \partial_z^2 + k^2 + \left( e^{2 A} m_5^2 - e^{A} m_5 \dot{A} \right)  \right)h_n\left(z\right)}{k^2+m_n^2}\mathds{1}_{2\times 2}
+    \end{bmatrix}
+\end{align}
+if now $h_n$ and $g_n$ are solutions of the Schrodinger problems~\ref{left_schrodinger_problem} and~\ref{right_schrodinger_problem} respectively we get
+\begin{align}
+    e^{\frac{1}{2} \left( - 4 \bar{A} - 6 A + \bar{\Phi}-\Phi \right)}\sum_n
+    \begin{bmatrix}
+        g_n\left(\bar{z}\right)g_n\left(z\right)\mathds{1}_{2\times 2} & 0 \\
+        0 & h_n\left(\bar{z}\right)h_n\left(z\right)\mathds{1}_{2\times 2}
+    \end{bmatrix}
+\end{align}
+Since $g_n$ and $h_n$ are solutions of a Schrodinger problem they satisfy $\sum_n g_n \left(z\right) g_n \left(\bar{z}\right) = \delta \left( z - \bar{z} \right)$ and $\sum_n h_n \left(z\right) h_n \left(\bar{z}\right) = \delta \left( z - \bar{z} \right)$. The left-hand side then takes the form
+\begin{align}
+    e^{-5 A\left(z\right)} \mathds{1}_{4\times4} \delta\left( z - \bar{z} \right) = \frac{1}{\sqrt{g}} \delta\left( z - \bar{z} \right)
+\end{align}
+From this we conclude that
+\begin{align}
+    & S\left(X,\bar{X}\right) = \int \frac{d^4 k}{{\left(2\pi\right)}^4} S_k \left(z,\bar{z}\right) e^{i k \cdot \left(\mathbf{x}-\mathbf{\bar{x}}\right)}, \\
+    &S_k \left(z, \bar{z}\right) = - e^{\frac{1}{2}A\left(z\right)} \left[ e^{-A} \gamma_5 \left( \partial_z - \frac{1}{2} \dot{\Phi} \right) + i e^{-A} \slashed{k} + \frac{3}{2} e^{-A} \dot{A} \gamma_5 + m_5 \right] \times \\ \notag
+    & \times e^{\frac{\Phi-3 A}{2}}e^{\frac{\bar{\Phi}-3 \bar{A}}{2}} \left( \sum_n \frac{g_n(z)g_n(\bar{z})}{k^2+ m_n^2} P_{-} + \sum_n \frac{h_n(z)h_n(\bar{z})}{k^2+ m_n^2} P_{+} \right)e^{-\frac{1}{2}A\left(\bar{z}\right)} \notag
+\end{align}
+where $h_n$ and $g_n$ are solutions of the Schrodinger problems~\ref{left_schrodinger_problem} and~\ref{right_schrodinger_problem} respectively is the expression we are looking for the bulk-to-bulk propagator
 \end{document}
