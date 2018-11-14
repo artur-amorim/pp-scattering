@@ -65,7 +65,7 @@ field we are left with the single coupling
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Scattering amplitude}
+\section{Scattering amplitude with a scalar}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 We are interested in computing the Witten diagram of figure~\ref{fig:Witten_diagram}.
 \begin{figure}[t!]
@@ -136,5 +136,69 @@ where the parameteres a and b will be fitted by the data.
 Then the amplitude can be simply written as
 \begin{align}
     \mathcal{A} = \sum_n I_n \bar{I}_n
+\end{align}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Coupling a fermion to spin J field}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+We will assume that in the bulk there is spinor field dual to the boundary proton field. The proton field has conformal dimension $\Delta = 9 / 2$ and throught AdS/CFT the bulk mass $m_5 = \Delta - d / 2 = 5 / 2$ for a 4-dimensional boundary theory.
+
+The external state for a proton in a spin state $u_\sigma$ is
+\begin{align}
+    \psi_\sigma \left( z, x\right) = \left( f_L \left(z\right) P_{-} + f_R \left(z\right) P_{+}\right) u_\sigma
+\end{align}
+where $f_{L,R} = e^{\frac{\Phi}{2} - 2 A} g_{L,R}$ with $g_{L,R}$ being solutions of the Schrodinger problems associated with the spinor in the bulk. Look at propagators notes for more details.
+
+The vertex between a spinor field with a graviton is given by
+\begin{align}
+    \int d^5 X \sqrt{-g} e^{-\Phi} \frac{i}{4} \left( \bar{\psi} \Gamma_A \nabla_B \psi + \bar{\psi} \Gamma_B \nabla_A  \psi - \nabla_A \bar{\psi} \Gamma_B \psi - \nabla_B \bar{\psi} \Gamma_A \psi  \right) h^{AB}.
+\end{align}
+with $\Gamma_A = e^a_A \gamma_a$. The generalization for spin J fields consists in just adding covariant derivatives action on the fields $\psi$ and $\bar{\psi}$. In the notebook fermion we checked that the dominant term in the Regge limit is $h^{-\cdots-}$ and $h^{+\cdots+}$ in the upper and lower parts of the diagram respectively. We also checked that there is conservation of polarization in each vertex between the ingoing and outgoing particles. The upper part of the diagram contributes as
+\begin{align}
+    \frac{{\left(-i\right)}^J}{2^{J-1}} {\left( \sqrt{s} \right)}^J e^A h^{- \cdots -} e^{- i q_\perp \cdot x_\perp}
+    \begin{cases}
+        & f_L^2 ,\quad s_1 = s_3 = \uparrow \\
+        & f_R^2 ,\quad s_1 = s_3 = \downarrow
+    \end{cases}
+\end{align}
+while the lower part contributes as
+\begin{align}
+    \frac{{\left(-i\right)}^J}{2^{J-1}} {\left( \sqrt{s} \right)}^J e^A h^{+ \cdots +} e^{ i q_\perp \cdot \bar{x}_\perp}
+    \begin{cases}
+        & f_R^2 ,\quad s_2 = s_4 = \uparrow \\
+        & f_L^2 ,\quad s_2 = s_4 = \downarrow
+    \end{cases}
+\end{align}
+The amplitude for pp scattering throught the exchange of an even spin-J field with the incoming and outgoing spins pointing upwards is then 
+\begin{align}
+    &{\left( i k_J \right)}^2 \int d^5X d^5 \bar{X} \sqrt{-g} \sqrt{-\bar{g}} e^{-\Phi} e^{-\bar{\Phi}} \frac{{\left(-i\right)}^{2 J}s^J}{2^{J-1} 2^{J-1}} e^{A} e^{\bar{A}} e^{- i q_\perp \cdot x_\perp} e^{ i q_\perp \cdot \bar{x}_\perp} \times \\
+    & \times f_L^2\left(z\right)f_R^2\left(\bar{z}\right) e^{- 2 A J} e^{-2 \bar{A} J} \Pi_{+\cdots +, - \cdots -} \left(X , \bar{X} \right)
+\end{align}
+Since $\sqrt{-g} = \frac{e^{5A}}{2}$ after defining $w = x - \bar{x}$ we get
+\begin{align}
+    & - k_J^2 \int dz d\bar{z} \frac{d^4 \bar{x}}{2} e^{5 A} e^{5 \bar{A}} e^{-\Phi} e^{-\bar{\Phi}} 4 s^J e^A e^{\bar{A}} f_L^2\left(z\right)f_R^2\left(\bar{z}\right) e^{-2 A J} e^{-2 \bar{A} J} \times \\
+    & \times \int d^2l_\perp e^{- i q_\perp \cdot l_\perp} \int \frac{dw^+ dw^-}{2} \Pi_{+ \cdots +, - \cdots -} \left(X, \bar{X} \right)
+\end{align}
+Now we use the identities
+\begin{align}
+    & \int \frac{dw^+ dw^-}{2} \Pi_{+ \cdots +, - \cdots -} \left(X , \bar{X}\right) = - \frac{i}{2^J} e^{\left(J-1\right)\left( A +\bar{A} \right)} G_J \left(z, \bar{z}, l_\perp \right) \\
+    & \int d^2 l_\perp e^{- i q_\perp \cdot l_\perp} G_J \left(z, \bar{z}, l_\perp \right) = G_J \left(z, \bar{z}, t \right)
+\end{align}
+after dropping volume factos we get
+\begin{align}
+    \frac{k_J^2}{2^{J-2}} s^J \int dz d\bar{z} e^{-\Phi} e^{-\bar{\Phi}} e^{5 A} e^{5 \bar{A}} e^{-J A} e^{- J \bar{A}} f_L^2\left(z\right)f_R^2\left(\bar{z}\right)  G_J \left(z, \bar{z}, t \right)
+\end{align}
+Using the fact $f_{L,R} = e^{\frac{\Phi}{2} - 2 A} g_{L,R}$ and
+\begin{align}
+    G_J \left(z, \bar{z}, t \right) = e^{\Phi - A/2}e^{\bar{\Phi} - \bar{A}/2} \sum_n \frac{\psi_n (z) \psi_n (\bar{z})}{t_n (J)-t}
+\end{align}
+the amplitude can be written as
+\begin{align}
+    \mathcal{A}_J = \sum_n \frac{k_J^2}{2^{J-2}} \frac{s^J}{t_n (J)-t} \int dz d\bar{z} e^{\Phi} e^{\bar{\Phi}} e^{-(J-1/2)(A+\bar{A})} g_L^2 (z) g_R^2 (\bar{z}) \psi_n (z) \psi_n (\bar{z})
+\end{align}
+To get the total amplitude we need to perform a sum over all even spin $J \geq 2$ fields. By means of the Sommerfeld-Watson transform and then deforming the contour and picking up the poles the scattering amplitude is
+\begin{align}
+    \mathcal{A} = -\frac{\pi}{2} \sum_n \frac{k_{j_n}^2}{2^{j_n -2}} \left[ \cot \left( \frac{\pi j_n}{2} + i \right) \right] \frac{d j_n}{dt} s^{j_n} & \int dz d\bar{z} e^{\Phi + \bar{\Phi}} e^{- (j_n - 1 /2)(A + \bar{A})} \times \\ \notag
+    & \times g_L^2 (z) g_R^2 (\bar{z}) \psi_n (z) \psi_n (\bar{z})
 \end{align}
 \end{document}
